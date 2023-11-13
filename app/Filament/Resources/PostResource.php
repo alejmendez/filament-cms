@@ -41,8 +41,10 @@ class PostResource extends Resource
                     ->disabled()
                     ->maxLength(255),
                 Forms\Components\Select::make('categories')
+                    ->relationship('categories', 'name')
                     ->multiple()
-                    ->relationship('categories', 'name'),
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\FileUpload::make('image_url')
                     ->image()
                     ->imageEditor()
